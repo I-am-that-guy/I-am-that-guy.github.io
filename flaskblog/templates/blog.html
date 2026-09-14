@@ -1,30 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-<section class="pt-16 mx-40 box-border min-h-[80vh] max-lg:mx-[5%] max-sm:mx-[3%]">
+<section class="pt-16 mx-auto w-[min(880px,92%)] min-h-[80vh]">
+  <p class="mb-6 text-center text-[rgb(85,85,85)] dark:text-gray-400">
+    ← the journal now lives on the <a href="/#journal" class="underline">creative side</a> →
+  </p>
   {% if posts %}
     {% for post in posts %}
       <div class="post-container flex border-2 border-[rgb(163,163,163)] dark:border-neutral-600 rounded-[2rem] p-4 items-center relative m-1.5 mb-6 !bg-white dark:!bg-neutral-800 transition-colors duration-300">
         {% if post.media %}
-          {% if post.media_type == 'image' %}
-            <img
-              src="{{ url_for('static', filename='assets/uploaded_media/' + post.media) }}"
-              alt="Image for {{ post.title }}"
-              class="rounded-[35%] h-[200px] w-auto flex-shrink-0"
-            />
-          {% elif post.media_type == 'video' %}
-            <video class="rounded-[35%] h-[200px] w-auto flex-shrink-0">
-              <source src="{{ post.media }}" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          {% elif post.media_type == 'gif' %}
-            <img 
-              src="{{ post.media }}" 
-              alt="GIF for {{ post.title }}"
-              class="rounded-[35%] h-[200px] w-auto flex-shrink-0"
-            />
-          {% endif %}
+          <img
+            src="{{ url_for('static', filename='assets/uploaded_media/' + post.media) }}"
+            alt="Image for {{ post.title }}"
+            class="rounded-[35%] h-[200px] w-auto flex-shrink-0"
+          />
         {% endif %}
-        
+
         <div class="post-text ml-4 flex-1 pr-24 max-sm:pr-16">
           {% if post.title %}
             <h2 class="post-title text-2xl font-semibold text-left mb-2 text-black dark:text-white max-sm:text-xl">{{ post.title }}</h2>
@@ -33,7 +23,7 @@
             {{ post.content|safe }}
           </div>
         </div>
-        
+
         <p class="post-date text-sm italic text-gray-500 dark:text-gray-400 absolute bottom-0 right-0 m-0 p-2">{{ post.date_created }}</p>
       </div>
     {% endfor %}

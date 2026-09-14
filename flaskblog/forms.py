@@ -10,3 +10,11 @@ class PostForm(FlaskForm):
     content = CKEditorField('Content', validators=[DataRequired()])
     media = FileField('Upload media', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     submit = SubmitField('Upload')
+
+
+class LinkedInForm(FlaskForm):
+    linkedin_pdf = FileField(
+        'LinkedIn page (PDF)',
+        validators=[FileAllowed(['pdf'], message='PDF files only!')]
+    )
+    submit = SubmitField('Upload LinkedIn PDF')

@@ -1,0 +1,8 @@
+{
+  "github_username": "the-jola-amodu",
+  "github_excluded_repos": ["the-jola-amodu.github.io", "Portfolio_Website"],
+  "pinned_repos": ["Project-Lytrally", "Drone-Programming-with-Python-tkinter-interface", "React-Project-1"],
+  "max_projects": 8,
+  "commit_count_repos": 6,
+  "cache_minutes": 30
+}
