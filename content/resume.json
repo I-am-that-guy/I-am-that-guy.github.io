@@ -1,0 +1,55 @@
+{
+  "basics": {
+    "name": "Jolaoluwa Amodu",
+    "headline": "Full-Stack Developer",
+    "email": "jola47amodu@gmail.com",
+    "location": "Nashville, TN",
+    "summary": [
+      "I'm currently a Computer Science junior at Fisk University and I enjoy automating boring work. My background is in software engineering, with a particular interest in automation, AI, and systems that solve real problems.",
+      "Beyond the code, I care about product. I like thinking through what to build, how it should work, and whether anyone actually needs it. Basically, I enjoy the part where an idea stops being an idea."
+    ],
+    "profiles": {
+      "github": "https://github.com/the-jola-amodu",
+      "linkedin": "https://www.linkedin.com/in/jola-amodu/"
+    }
+  },
+  "work": [
+    {
+      "role": "Student Researcher",
+      "org": "Arkansas Summer Research Institute",
+      "period": "05/2025 — 06/2025",
+      "highlights": [
+        "Participated in a structured summer research programme",
+        "Collaborated with faculty and peers on applied research workflows"
+      ]
+    },
+    {
+      "role": "Software Design Intern",
+      "org": "STAIJA",
+      "period": "11/2023 — 05/2024",
+      "highlights": [
+        "Designed and prototyped software features end to end",
+        "Worked across the stack from interface concepts to implementation"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelors of Science in Computer Science",
+      "school": "Fisk University",
+      "detail": "Minor in Business Administration"
+    }
+  ],
+  "skills": [
+    { "name": "Python", "icon": "python.png", "level": "3 years" },
+    { "name": "Git", "icon": "git.png", "level": "3 years" },
+    { "name": "CSS", "icon": "css-3.png", "level": "2 years" },
+    { "name": "HTML", "icon": "html.png", "level": "2 years" },
+    { "name": "Flask Framework", "icon": "flask.png", "level": "2 years" },
+    { "name": "C++", "icon": "c-.png", "level": "2 years" },
+    { "name": "React", "icon": "atom.png", "level": "2 years" },
+    { "name": "Arduino", "icon": "arduino.png", "level": "2 years" },
+    { "name": "JavaScript", "icon": "java-script.png", "level": "1 year" },
+    { "name": "Figma", "icon": "figma.png", "level": "1 year" }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "source": "fallback",
+  "projects": [
+    {
+      "name": "AI Powered texteditor",
+      "repo": "Project-Lytrally",
+      "description": "A text editor with AI powered paraphrasing, summary and content generation",
+      "html_url": "https://github.com/the-jola-amodu/Project-Lytrally",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "commits": "",
+      "language": "Python",
+      "topics": ["ai", "nlp"],
+      "tags": ["python", "ai", "nlp"],
+      "image": "project1.png"
+    },
+    {
+      "name": "Interface for DJI Tello Drones",
+      "repo": "Drone-Programming-with-Python-tkinter-interface",
+      "description": "Drone control with 3 DoF, live video feed, image capture, face detection and tracking",
+      "html_url": "https://github.com/the-jola-amodu/Drone-Programming-with-Python-tkinter-interface",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "commits": "",
+      "language": "Python",
+      "topics": ["drones", "computer-vision"],
+      "tags": ["python", "drones", "computer-vision"],
+      "image": "project2.png"
+    },
+    {
+      "name": "Chef Claude",
+      "repo": "React-mini-projects",
+      "description": "Generate recipes based on ingredients you have available to you!",
+      "html_url": "https://github.com/the-jola-amodu/React-mini-projects",
+      "homepage": "https://sous-chef-claude.netlify.app/",
+      "stars": 0,
+      "forks": 0,
+      "commits": "",
+      "language": "JavaScript",
+      "topics": ["react", "ai"],
+      "tags": ["javascript", "react", "ai"],
+      "image": "project3.png"
+    },
+    {
+      "name": "React mini games",
+      "repo": "",
+      "description": "Need a break? Try out one of these mini games!",
+      "html_url": "https://swe-endgame.netlify.app/",
+      "homepage": "https://ten-die-tenzies.netlify.app/",
+      "stars": 0,
+      "forks": 0,
+      "commits": "",
+      "language": "JavaScript",
+      "topics": ["react", "games"],
+      "tags": ["javascript", "react", "games"],
+      "image": "project4.png"
+    },
+    {
+      "name": "Gemini + RAG",
+      "repo": "React-Project-1",
+      "description": "A RAG pipeline that feeds Gemini API with information sourced from my portfolio and LinkedIn (ethically, yes)",
+      "html_url": "https://github.com/the-jola-amodu/React-Project-1",
+      "homepage": "https://jairag.vercel.app/",
+      "stars": 0,
+      "forks": 0,
+      "commits": "",
+      "language": "JavaScript",
+      "topics": ["rag", "gemini"],
+      "tags": ["javascript", "ai", "rag", "gemini"],
+      "image": "project5.png"
+    }
+  ]
+}

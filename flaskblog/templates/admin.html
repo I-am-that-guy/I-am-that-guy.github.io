@@ -1,67 +1,107 @@
 {% extends "layout.html" %}
 {% block content %}
-<section id="post" class="pt-16 mx-40 box-border min-h-[80vh] max-lg:mx-[5%] max-sm:mx-[3%]">
-  <div class="post-form max-w-4xl mx-auto !bg-white dark:!bg-neutral-800 rounded-[2rem] border-2 border-[rgb(163,163,163)] dark:border-neutral-600 p-8 max-sm:p-4">
-    <form method="POST" action="" enctype="multipart/form-data">
-      {{ form.hidden_tag() }}
-      <fieldset class="mb-8">
-        <legend class="text-3xl font-semibold mb-6 pb-4 border-b-2 border-[rgb(163,163,163)] dark:border-neutral-600 text-black dark:text-white">
-          What would you like to create?
-        </legend>
-        
-        <!-- Title Field -->
-        <div class="mb-6">
-          {{ form.title.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
-          {% if form.title.errors %}
-            {{ form.title(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-red-500 focus:outline-none focus:border-red-600 !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
-            <div class="mt-2">
-              {% for error in form.title.errors %}
-                <span class="text-red-500 text-sm">{{ error }}</span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.title(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-[rgb(163,163,163)] dark:border-neutral-600 focus:outline-none focus:border-[rgb(53,53,53)] dark:focus:border-neutral-500 transition-colors duration-300 !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
-          {% endif %}
-        </div>
-        
-        <!-- Content Field -->
-        <div class="mb-6">
-          {{ form.content.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
-          {% if form.content.errors %}
-            {{ form.content(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-red-500 focus:outline-none focus:border-red-600 min-h-[300px] !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
-            <div class="mt-2">
-              {% for error in form.content.errors %}
-                <span class="text-red-500 text-sm">{{ error }}</span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.content(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-[rgb(163,163,163)] dark:border-neutral-600 focus:outline-none focus:border-[rgb(53,53,53)] dark:focus:border-neutral-500 transition-colors duration-300 min-h-[300px] !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
-          {% endif %}
-        </div>
-        
-        <!-- Media Upload Field -->
-        <div class="mb-6">
-          {{ form.media.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
-          <div class="mt-2">
-            {{ form.media(class="block w-full text-sm text-[rgb(85,85,85)] dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-2 file:border-[rgb(53,53,53)] dark:file:border-neutral-600 file:text-sm file:font-semibold file:bg-white dark:file:bg-neutral-700 file:text-black dark:file:text-gray-300 hover:file:bg-[rgb(53,53,53)] hover:file:text-white dark:hover:file:bg-neutral-600 file:transition-all file:duration-300 file:cursor-pointer") }}
+<section class="pt-10 pb-16 mx-auto w-[min(880px,92%)] min-h-[80vh]">
+  <div class="grid gap-8">
+
+    <!-- ── CARD 1: new post (existing behaviour, unchanged) ── -->
+    <div class="post-form !bg-white dark:!bg-neutral-800 rounded-[2rem] border-2 border-[rgb(163,163,163)] dark:border-neutral-600 p-8 max-sm:p-4 shadow-xl">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="mb-8">
+          <legend class="text-3xl font-semibold mb-6 pb-4 border-b-2 border-[rgb(163,163,163)] dark:border-neutral-600 text-black dark:text-white">
+            What would you like to create?
+          </legend>
+
+          <!-- Title Field -->
+          <div class="mb-6">
+            {{ form.title.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
+            {% if form.title.errors %}
+              {{ form.title(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-red-500 focus:outline-none focus:border-red-600 !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
+              <div class="mt-2">
+                {% for error in form.title.errors %}
+                  <span class="text-red-500 text-sm">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.title(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-[rgb(163,163,163)] dark:border-neutral-600 focus:outline-none focus:border-[rgb(53,53,53)] dark:focus:border-neutral-500 transition-colors duration-300 !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
+            {% endif %}
           </div>
-          {% if form.media.errors %}
+
+          <!-- Content Field -->
+          <div class="mb-6">
+            {{ form.content.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
+            {% if form.content.errors %}
+              {{ form.content(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-red-500 focus:outline-none focus:border-red-600 min-h-[300px] !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
+              <div class="mt-2">
+                {% for error in form.content.errors %}
+                  <span class="text-red-500 text-sm">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.content(class="w-full px-4 py-3 text-lg rounded-lg border-2 border-[rgb(163,163,163)] dark:border-neutral-600 focus:outline-none focus:border-[rgb(53,53,53)] dark:focus:border-neutral-500 transition-colors duration-300 min-h-[300px] !bg-white dark:!bg-neutral-700 text-black dark:text-white") }}
+            {% endif %}
+          </div>
+
+          <!-- Media Upload Field -->
+          <div class="mb-6">
+            {{ form.media.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
             <div class="mt-2">
-              {% for error in form.media.errors %}
-                <span class="text-red-500 text-sm block">{{ error }}</span>
-              {% endfor %}
+              {{ form.media(class="block w-full text-sm text-[rgb(85,85,85)] dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-2 file:border-[rgb(53,53,53)] dark:file:border-neutral-600 file:text-sm file:font-semibold file:bg-white dark:file:bg-neutral-700 file:text-black dark:file:text-gray-300 hover:file:bg-[rgb(53,53,53)] hover:file:text-white dark:hover:file:bg-neutral-600 file:transition-all file:duration-300 file:cursor-pointer") }}
             </div>
-          {% endif %}
+            {% if form.media.errors %}
+              <div class="mt-2">
+                {% for error in form.media.errors %}
+                  <span class="text-red-500 text-sm block">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="mt-8">
+          {{ form.submit(class="font-semibold transition-all duration-300 ease-in-out py-3 px-8 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-[rgb(53,53,53)] dark:bg-neutral-700 text-white hover:cursor-pointer hover:bg-black dark:hover:bg-neutral-800 text-lg") }}
         </div>
-      </fieldset>
-      
-      <!-- Submit Button -->
-      <div class="mt-8">
-        {{ form.submit(class="font-semibold transition-all duration-300 ease-in-out py-3 px-8 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-[rgb(53,53,53)] dark:bg-neutral-700 text-white hover:cursor-pointer hover:bg-black dark:hover:bg-neutral-800 text-lg") }}
-      </div>
-    </form>
-    {{ ckeditor.load() }}
-    {{ ckeditor.config(name='content') }}
+      </form>
+      {{ ckeditor.load() }}
+      {{ ckeditor.config(name='content') }}
+    </div>
+
+    <!-- ── CARD 2: LinkedIn page PDF ── -->
+    <div class="post-form !bg-white dark:!bg-neutral-800 rounded-[2rem] border-2 border-[rgb(163,163,163)] dark:border-neutral-600 p-8 max-sm:p-4 shadow-xl">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {{ linkedin_form.hidden_tag() }}
+        <fieldset>
+          <legend class="text-3xl font-semibold mb-2 pb-4 border-b-2 border-[rgb(163,163,163)] dark:border-neutral-600 text-black dark:text-white">
+            LinkedIn page (PDF)
+          </legend>
+          <p class="text-[rgb(85,85,85)] dark:text-gray-300 mb-4 max-sm:text-sm">
+            Save your LinkedIn profile as a PDF (<span class="italic">Profile&nbsp;&rarr;&nbsp;More&nbsp;&rarr;&nbsp;Save to PDF</span>) and upload it here.
+            It is served at <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-700 text-sm">/linkedin</code>
+            and linked from the portfolio's contact section.
+          </p>
+
+          <div class="mb-6">
+            {{ linkedin_form.linkedin_pdf.label(class="block text-lg font-semibold mb-2 text-[rgb(85,85,85)] dark:text-gray-300") }}
+            <div class="mt-2">
+              {{ linkedin_form.linkedin_pdf(class="block w-full text-sm text-[rgb(85,85,85)] dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-2 file:border-[rgb(53,53,53)] dark:file:border-neutral-600 file:text-sm file:font-semibold file:bg-white dark:file:bg-neutral-700 file:text-black dark:file:text-gray-300 hover:file:bg-[rgb(53,53,53)] hover:file:text-white dark:hover:file:bg-neutral-600 file:transition-all file:duration-300 file:cursor-pointer") }}
+            </div>
+            {% if linkedin_form.linkedin_pdf.errors %}
+              <div class="mt-2">
+                {% for error in linkedin_form.linkedin_pdf.errors %}
+                  <span class="text-red-500 text-sm block">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="mt-6">
+            {{ linkedin_form.submit(class="font-semibold transition-all duration-300 ease-in-out py-3 px-8 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-[rgb(53,53,53)] dark:bg-neutral-700 text-white hover:cursor-pointer hover:bg-black dark:hover:bg-neutral-800 text-lg") }}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
   </div>
 </section>
 {% endblock content %}

@@ -1,232 +1,374 @@
 {% extends "layout.html" %}
 {% block content %}
-    <!-- PROFILE SECTION -->
-    <section id="profile" class="relative flex justify-center gap-20 h-[70vh] pt-16 mx-40 box-border min-h-fit max-xl:h-[83vh] max-xl:mb-24 max-lg:block max-lg:static max-lg:mx-[5%] max-sm:h-[83vh] max-sm:mb-0">
-      <div class="section__pic-container flex h-[400px] w-[400px] my-auto mx-0 max-lg:w-[275px] max-lg:h-[275px] max-lg:mx-auto max-lg:mb-8 max-sm:w-auto max-sm:h-[46vh] max-sm:justify-center">
-        <img
-          src="{{ url_for('static', filename='assets/images/headshot.png') }}"
-          alt="Jola Amodu Profile pic"
-          class="h-[500px] w-[450px] rounded-full max-lg:h-80 max-lg:w-[270px]"
-        />
-      </div>
-      <div class="section__text self-center text-center">
-        <p class="section__text__p1 text-center font-semibold text-[rgb(85,85,85)] dark:text-gray-400">Hello, I'm</p>
-        <h1 class="title text-5xl text-center max-sm:text-[2rem] dark:text-white">Jolaoluwa Amodu</h1>
-        <p class="section__text__p2 text-[1.75rem] mb-4 font-semibold text-[rgb(85,85,85)] dark:text-gray-400 max-sm:text-xl">
-          <span id="typewriter"></span>
-          <span class="typewriter-cursor">|</span>
-        </p>
-        <div class="btn-container flex justify-center gap-4 mt-4">
-          <button
-            class="btn btn-color-2 font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border-2 dark:text-gray-300 dark:hover:bg-neutral-700"
-            onclick="window.open('{{ url_for('static', filename='assets/documents/Jolas CV.pdf') }}')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1 font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-[rgb(53,53,53)] dark:bg-neutral-700 text-white hover:cursor-pointer hover:bg-black dark:hover:bg-neutral-800" onclick="location.href='./#contact'">
-            Contact me!
-          </button>
-        </div>
-        <div id="socials-container" class="flex justify-center mt-4 gap-4">
-          <img
-            src="{{ url_for('static', filename='assets/icons/linkedin.png') }}"
-            alt="linkedin profile"
-            class="icon cursor-pointer h-8 mt-4"
-            onclick="location.href='https://www.linkedin.com/in/jola-amodu/'"
-          />
-          <img
-            src="{{ url_for('static', filename='assets/icons/github.png') }}"
-            alt="github profile"
-            class="icon cursor-pointer h-8 mt-4"
-            onclick="location.href='https://github.com/the-jola-amodu'"
-          />
-        </div>
-      </div>
-      <img src="{{ url_for('static', filename='assets/icons/arrow.png') }}" alt="arrow down" class="icon arrow absolute right-[-5rem] bottom-10 cursor-pointer h-8 mt-4 max-lg:hidden" onclick="location.href='./#about'">
-    </section>
+<div id="dm-root" class="dm-root mode-technical dm-font-body">
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="mt-32 relative pt-16 mx-40 box-border min-h-fit max-lg:mx-[5%]">
-      <p class="section__text__p1 text-center font-semibold text-[rgb(85,85,85)] dark:text-gray-400">
-        Get To Know More
-      </p>
-      <h1 class="title text-5xl text-center max-sm:text-[2rem] dark:text-white">
-        About Me
-      </h1>
-      <div class="section-container flex gap-16 h-[80%] max-lg:block max-lg:h-fit">
-        <div class="section__pic-container flex h-[400px] w-[680px] my-auto mx-0 max-lg:w-[275px] max-lg:h-[275px] max-lg:mx-auto max-lg:mb-8 max-sm:w-auto max-sm:h-[46vh] max-sm:justify-center">
-          <img src="{{ url_for('static', filename='assets/images/Untitled.png') }}" alt="Another profile pic" class="about-pic rounded-[2rem]">
+  <!-- ═══════════ MEDALLION — the only switch between the two sides ═══════════
+       A quiet coin on the top edge. Easy to miss, easy to find once
+       you know it's there. -->
+  <button
+    type="button"
+    id="dm-medallion"
+    class="dm-medallion"
+    aria-label="Flip the portfolio to its other side"
+    aria-pressed="false"
+    title="flip the medallion ⟡"
+  >
+    <span class="dm-medallion-ring" aria-hidden="true"></span>
+    <span class="dm-medallion-glyph tech" aria-hidden="true">±</span>
+    <span class="dm-medallion-glyph art" aria-hidden="true">❋</span>
+  </button>
+
+  <!-- ══════════════════════════ TECHNICAL SIDE ══════════════════════════
+       The entire screen is one vintage terminal: bezel, glass, scanlines.
+       Every section is a command. The command bar stays pinned. -->
+  <div id="mode-technical" class="dm-layer term-page">
+    <div class="term-window">
+
+      <div class="term-chrome">
+        <div class="term-titlebar">
+          <span class="term-screw" aria-hidden="true"></span>
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="term-title">jola@portfolio: ~/portfolio_terminal</span>
+          <span class="term-hint">— run a command below</span>
         </div>
-        <div class="about-details-container flex justify-center flex-col">
-          <div class="about-containers flex mb-8 mt-8 gap-8 flex-wrap max-xl:flex-wrap max-lg:mt-0">
-            <div class="details-container p-2 flex-1 !bg-white dark:!bg-neutral-800 rounded-[2rem] border-2 border-[rgb(163,163,163)] dark:border-neutral-600">
-              <div class="section-headers flex ml-4">
-                <img src="{{ url_for('static', filename='assets/icons/experience.png') }}" alt="suitcase icon from flaticon.com" class="icon cursor-pointer h-8 mt-4">
-                <h3 class="mt-4 ml-2 dark:text-white">Experience Summary</h3>
+        <nav class="term-nav" aria-label="Terminal commands">
+          <button type="button" class="term-cmd is-active" data-dm-view="home">$ ./home</button>
+          <button type="button" class="term-cmd" data-dm-view="about">$ ./about</button>
+          <button type="button" class="term-cmd" data-dm-view="projects">$ ./projects</button>
+          <button type="button" class="term-cmd" data-dm-view="experience">$ ./experience</button>
+          <button type="button" class="term-cmd" data-dm-view="contact">$ ./contact</button>
+          <button
+            type="button"
+            class="term-cmd warm"
+            data-dm-cmd="resume"
+            data-resume-url="{{ url_for('static', filename='assets/documents/Jolas CV.pdf') }}"
+          >$ ./resume.pdf</button>
+          <button
+            type="button"
+            class="term-cmd warm"
+            data-dm-cmd="linkedin"
+            data-linkedin-url="{{ linkedin_pdf_url or 'https://www.linkedin.com/in/jola-amodu/' }}"
+          >$ ./linkedin</button>
+        </nav>
+      </div>
+
+      <div class="term-screen">
+        <div class="term-body" id="term-body">
+          <!-- Instructions that have been run live here (most recent kept) -->
+          <div class="term-history" id="term-history" aria-live="polite" aria-label="Terminal session history"></div>
+
+      <main id="term-view">
+        <!-- ─────────── HOME: pictures + typewriter, fits one screen ─────────── -->
+        <section class="dm-view is-active" data-view="home" id="view-home">
+          <div class="home-grid">
+            <div class="home-photos dm-reveal">
+              <img
+                src="{{ url_for('static', filename='assets/images/headshot.png') }}"
+                alt="Jola Amodu portrait"
+                class="home-pic sculpted-frame"
+              />
+            </div>
+            <div class="home-text">
+              <p class="home-hello dm-muted">&gt; Hello, I'm</p>
+              <h1 class="home-name dm-text">Jolaoluwa Amodu</h1>
+              <p class="home-type dm-muted">
+                <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+              </p>
+              <div class="btn-container flex justify-center gap-4 mt-4">
+                <button
+                  type="button"
+                  class="dm-hero-btn"
+                  onclick="window.open('{{ url_for('static', filename='assets/documents/Jolas CV.pdf') }}')"
+                >
+                  Download CV
+                </button>
+                <button type="button" class="dm-hero-btn solid" onclick="location.href='./#contact'">
+                  Contact me!
+                </button>
               </div>
-              <ul class="ml-8 mr-4 mt-2 mb-2 space-y-2 list-none">
-                <li class="flex items-start text-[rgb(85,85,85)] dark:text-gray-400">
-                  <span class="mr-2 mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[rgb(85,85,85)] dark:bg-gray-400"></span>
-                  <span><strong>Student Researcher</strong> at Arkansas Summer Research Institute: 05/2025 - 06/2025</span>
-                </li>
-                <li class="flex items-start text-[rgb(85,85,85)] dark:text-gray-400">
-                  <span class="mr-2 mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[rgb(85,85,85)] dark:bg-gray-400"></span>
-                  <span><strong>Software Design Intern</strong> at STAIJA: 11/2023 - 05/2024</span>
-                </li>
+              <div id="socials-container" class="flex justify-center mt-4 gap-4">
+                <a href="https://www.linkedin.com/in/jola-amodu/" aria-label="LinkedIn profile">
+                  <img
+                    src="{{ url_for('static', filename='assets/icons/linkedin.png') }}"
+                    alt="linkedin profile"
+                    class="dm-social-icon"
+                  />
+                </a>
+                <a href="https://github.com/the-jola-amodu" aria-label="GitHub profile">
+                  <img
+                    src="{{ url_for('static', filename='assets/icons/github.png') }}"
+                    alt="github profile"
+                    class="dm-social-icon"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────── ABOUT + SKILLS (combined) ─────────── -->
+        <section class="dm-view" data-view="about" id="about">
+          <p class="dm-kicker">cat about/me.txt && ls skills/</p>
+          <h2 class="dm-h2">About Me</h2>
+          {% set basics = resume.get('basics', {}) if resume is mapping else {} %}
+          <div class="about-grid">
+            <div class="about-photo dm-reveal">
+              <img
+                src="{{ url_for('static', filename='assets/images/Untitled.png') }}"
+                alt="Jola Amodu — portrait"
+                class="about-pic sculpted-frame"
+              />
+            </div>
+            <div class="about-body">
+              {% for paragraph in basics.get('summary', []) %}
+                <p class="dm-muted about-para">{{ paragraph }}</p>
+              {% endfor %}
+              {% for edu in resume.get('education', []) %}
+                <div class="dm-edu-card sculpted-frame dm-reveal text-center">
+                  <p class="dm-edu-degree">{{ edu.degree }}</p>
+                  <p class="dm-edu-school">{{ edu.school }}</p>
+                  {% if edu.detail %}<p class="dm-edu-detail">{{ edu.detail }}</p>{% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="dm-skill-grid">
+            {% for s in resume.get('skills', []) %}
+            <div class="dm-skill sculpted-frame dm-reveal">
+              <img src="{{ url_for('static', filename='assets/icons/' + s.icon) }}" alt="{{ s.name }} icon" />
+              <span class="dm-skill-name">{{ s.name }}</span>
+              <span class="dm-skill-level">{{ s.level }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <!-- ─────────── PROJECTS (GitHub-driven) ─────────── -->
+        <section class="dm-view" data-view="projects" id="projects">
+          <p class="dm-kicker">executing git_fetch_projects.sh</p>
+          <h2 class="dm-h2">Recent Projects</h2>
+          <p class="text-center dm-muted term-note">
+            source: {{ 'live · api.github.com' if projects_source == 'github' else 'cached snapshot (api rate-limited)' }}
+          </p>
+          <div id="dm-tagbar" class="dm-tagbar" aria-label="Filter projects by tag"></div>
+          <div class="dm-project-grid">
+            {% for p in projects %}
+            <article
+              class="dm-project sculpted-card dm-reveal"
+              data-tags="{{ p.tags | join(' ') }}"
+              data-index="{{ loop.index0 }}"
+            >
+              <div class="dm-project-head">
+                <span>~/{{ p.repo or p.name }}</span>
+                <span class="src">repo</span>
+              </div>
+              {% if p.image %}
+              <img src="{{ url_for('static', filename='assets/icons/' + p.image) }}" alt="{{ p.name }}" class="dm-project-img" />
+              {% endif %}
+              <h3 class="dm-project-name">{{ p.name }}</h3>
+              <p class="dm-project-desc">{{ p.description or 'No description provided.' }}</p>
+              <div class="dm-project-meta">
+                {% if p.language %}<span class="dm-lang-badge">{{ p.language }}</span>{% endif %}
+                <span class="star">★ {{ p.stars }}</span>
+                <span class="fork">⑂ {{ p.forks }}</span>
+                {% if p.commits %}<span class="commit">⎇ {{ p.commits }} commits</span>{% endif %}
+              </div>
+              <div class="dm-project-links">
+                <a class="dm-link-btn" href="{{ p.html_url }}" target="_blank" rel="noopener">GitHub ↗</a>
+                {% if p.homepage %}
+                <a class="dm-link-btn ghost" href="{{ p.homepage }}" target="_blank" rel="noopener">Live Demo ↗</a>
+                {% endif %}
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <!-- ─────────── EXPERIENCE (resume.json driven) ─────────── -->
+        <section class="dm-view" data-view="experience" id="experience">
+          <p class="dm-kicker">cat content/resume.json --section=work</p>
+          <h2 class="dm-h2">Experience</h2>
+          <div class="dm-timeline">
+            {% for job in resume.get('work', []) %}
+            <div class="dm-timeline-item dm-reveal">
+              <p class="dm-timeline-period">{{ job.period }}</p>
+              <h3 class="dm-timeline-role">{{ job.role }}</h3>
+              <p class="dm-timeline-org">{{ job.org }}</p>
+              <ul class="mt-2 space-y-1">
+                {% for point in job.get('highlights', []) %}
+                <li><span class="dm-accent">›</span> {{ point }}</li>
+                {% endfor %}
               </ul>
             </div>
-            <div class="details-container p-2 flex-1 !bg-white dark:!bg-neutral-800 rounded-[2rem] border-2 border-[rgb(163,163,163)] dark:border-neutral-600">
-              <div class="section-headers flex ml-4">
-                <img src="{{ url_for('static', filename='assets/icons/education.png') }}" alt="education icon" class="icon cursor-pointer h-8 mt-4">
-                <h3 class="mt-4 ml-2 dark:text-white">Education</h3>
-              </div>
-                <p class="flex ml-4 text-[rgb(85,85,85)] dark:text-gray-400">Bachelors of Science in Computer Science</p>
-                <p class="mini-italic text-sm italic mb-2 flex ml-4 text-[rgb(85,85,85)] dark:text-gray-400 max-lg:hidden">Minor in Business Administration</p>
-              </div>  
-                </div> 
-                <div class="text-container">
-                  <p class="mt-2 mb-2 text-[rgb(85,85,85)] dark:text-gray-400 max-sm:text-justify">I am currently a freshman student at Fisk University with interests in software engineering, automation and electronics. I am a Python developer with experience in website development. </p>
-                  <p class="mt-2 mb-2 text-[rgb(85,85,85)] dark:text-gray-400 max-sm:text-justify">I would describe myself as motivated, meticulous and inventive. I also love to connect concepts across my areas of interests to foster innovation and weave a bit of creativity into my technical work. </p> 
-                </div>
-              </div>
-              </div>
-         <img src="{{ url_for('static', filename='assets/icons/arrow.png') }}" alt="arrow down" class="icon arrow absolute right-[-5rem] bottom-10 cursor-pointer h-8 mt-4 max-lg:hidden" onclick="location.href='./#skills'">
-    </section>
+            {% endfor %}
+          </div>
+        </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="relative pt-16 mx-40 box-border min-h-fit max-lg:h-[50vh] max-lg:mx-[5%]">
-      <div class="skill-section">
-        <div class="skill-header">
-          <p class="section__text__p1 text-center font-semibold text-[rgb(85,85,85)] dark:text-gray-400">Curious about</p>
-        <h1 class="title text-5xl text-center max-sm:text-[2rem] dark:text-white">My Skills?</h1>
-          <p class="mini-italic text-sm italic mb-2 mt-4 ml-[5px] max-lg:hidden dark:text-gray-400">(hover to learn more)</p>
-        </div>
-        <div class="skill-box flex flex-wrap justify-center gap-4">
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/python.png') }}" alt="python icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">Python</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">3 years experience💪</p>
+        <!-- ─────────── CONTACT ─────────── -->
+        <section class="dm-view" data-view="contact" id="contact">
+          <p class="dm-kicker">open channels --email --linkedin</p>
+          <h2 class="dm-h2">Contact Me</h2>
+          <div class="contact-info-upper-container dm-surface-box flex justify-center my-8 mx-auto p-2 max-sm:flex-wrap">
+            <div class="contact-info-container flex items-center justify-center gap-2 mx-4 my-4 max-sm:mx-0 max-sm:my-0">
+              <img src="{{ url_for('static', filename='assets/icons/email.png') }}" alt="email icon" class="icon contact-icon email-icon cursor-default h-10">
+              <p class="text-lg dm-muted max-sm:text-base"><a href="mailto:jola47amodu@gmail.com" class="dm-contact-link">jola47amodu@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container flex items-center justify-center gap-2 mx-4 my-4 max-sm:mx-0 max-sm:my-0">
+              <img src="{{ url_for('static', filename='assets/icons/linkedin.png') }}" alt="linkedin icon" class="icon contact-icon cursor-default h-10">
+              <p class="text-lg dm-muted max-sm:text-base"><a href="https://www.linkedin.com/in/jola-amodu/" class="dm-contact-link">LinkedIn</a></p>
+            </div>
+            {% if linkedin_pdf_url %}
+            <div class="contact-info-container flex items-center justify-center gap-2 mx-4 my-4 max-sm:mx-0 max-sm:my-0">
+              <img src="{{ url_for('static', filename='assets/icons/checkmark.png') }}" alt="resume icon" class="icon contact-icon cursor-default h-10">
+              <p class="text-lg dm-muted max-sm:text-base"><a href="/linkedin" class="dm-contact-link">LinkedIn (PDF)</a></p>
+            </div>
+            {% endif %}
           </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/css-3.png') }}" alt="css icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">CSS</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/html.png') }}" alt="html icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">HTML</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/java-script.png') }}" alt="javascript icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">JavaScript</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">1 year experience👍</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/flask.png') }}" alt="flask icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">Flask Framework</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/c-.png') }}" alt="c++ icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">C++</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/figma.png') }}" alt="figma icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">Figma</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">1 year experience👍</p>
-          </div>
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/git.png') }}" alt="git icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">Git</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">3 years experience💪</p>
-          </div>        
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/atom.png') }}" alt="react icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">React</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>        
-          <div class="skill-container flex flex-col items-center max-lg:mx-2 max-lg:mb-3 group">
-            <img src="{{ url_for('static', filename='assets/icons/arduino.png') }}" alt="react icon from flaticon" class="skill-icon cursor-pointer h-20 w-20 max-lg:h-[50px] max-lg:w-[50px]">
-            <p class="skill-text underline italic opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0 max-lg:text-[9px] dark:text-gray-300">Arduino</p>
-            <p class="skill-subtext text-sm opacity-0 translate-y-5 transition-all duration-[0.4s] ease-in-out group-hover:opacity-100 group-hover:translate-y-0 max-lg:hidden max-lg:translate-y-0 dark:text-gray-400">2 years experience👌</p>
-          </div>        
-        </div>
-         </div>
-      <img src="{{ url_for('static', filename='assets/icons/arrow.png') }}" alt="arrow down" class="icon arrow absolute right-[-5rem] bottom-10 cursor-pointer h-8 mt-4 max-lg:hidden" onclick="location.href='./#projects'">
-    </section>
+          <p class="text-center dm-muted term-note">
+            <a href="#journal" class="dm-contact-link">↳ read the blog ↰</a>
+            <span class="dm-term-sep">·</span>
+            <a href="/admin" class="dm-contact-link">admin ↰</a>
+          </p>
+        </section>
+        </main>
+      </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="relative pt-16 mx-40 box-border min-h-fit max-lg:mx-[5%]">
-      <p class="section__text__p1 text-center font-semibold text-[rgb(85,85,85)] dark:text-gray-400">Browse My</p>
-      <h1 class="title text-5xl text-center max-sm:text-[2rem] dark:text-white">Recent Projects</h1>
-      <div class="experience-details-container max-lg:mt-8">
-        <div class="about-containers flex mb-8 mt-8 gap-8 flex-wrap max-xl:flex-wrap max-lg:mt-0">
-          <div class="color-container flex flex-col content-center justify-center !bg-[rgb(250,250,250)] dark:!bg-neutral-800 text-center p-2 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 w-[290px]">
-            <img src="{{ url_for('static', filename='assets/icons/project1.png') }}" alt="project-1" class="projects-img w-full max-w-[15rem] h-auto rounded-[2rem] my-2 mx-auto block">
-            <h2 class="experience-subtitle project-title my-1 max-w-[330px] h-[74px] text-black dark:text-white content-center underline [text-decoration-thickness:0.7px]">AI Powered texteditor</h2>
-            <p class="project-text w-[270px] ml-auto mr-auto text-center text-[rgb(85,85,85)] dark:text-gray-400">A text editor with AI powered paraphrasing, summary and content generation</p>
-            <div class="experience-btns justify-center flex gap-4">
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://github.com/the-jola-amodu/Project-Lytrally'">Github</button>
-              <button disabled class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='./#projects'">Live Demo</button>
-            </div>
-          </div>
-          <div class="color-container flex flex-col content-center justify-center !bg-[rgb(250,250,250)] dark:!bg-neutral-800 text-center p-2 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 w-[290px]">
-            <img src="{{ url_for('static', filename='assets/icons/project2.png') }}" alt="project-2" class="projects-img w-full max-w-[15rem] h-auto rounded-[2rem] my-2 mx-auto block">
-            <h2 class="experience-subtitle project-title my-1 max-w-[330px] h-[74px] text-black dark:text-white content-center underline [text-decoration-thickness:0.7px]">Interface for DJI Tello Drones</h2>
-            <p class="project-text w-[270px] ml-auto mr-auto text-center text-[rgb(85,85,85)] dark:text-gray-400">Drone control with 3 DoF, live video feed, image capture, face detection and tracking</p>
-            <div class="experience-btns justify-center flex gap-4">
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://github.com/the-jola-amodu/Drone-Programming-with-Python-tkinter-interface'">Github</button>
-              <button disabled class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='./#projects'">Live Demo</button>
-            </div>
-          </div>
-          <div class="color-container flex flex-col content-center justify-center !bg-[rgb(250,250,250)] dark:!bg-neutral-800 text-center p-2 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 w-[290px]">
-            <img src="{{ url_for('static', filename='assets/icons/project3.png') }}" alt="project-3" class="projects-img w-full max-w-[15rem] h-auto rounded-[2rem] my-2 mx-auto block">
-            <h2 class="experience-subtitle project-title my-1 max-w-[330px] h-[74px] text-black dark:text-white content-center underline [text-decoration-thickness:0.7px]">Chef Claude</h2>
-            <p class="project-text w-[270px] ml-auto mr-auto text-center text-[rgb(85,85,85)] dark:text-gray-400">Generate recipes based on ingredients you have available to you!</p>
-            <div class="experience-btns justify-center flex gap-4">
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://github.com/the-jola-amodu/React-mini-projects'">Github</button>
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://sous-chef-claude.netlify.app/'">Live Demo</button>
-            </div>
-          </div>
-          <div class="color-container flex flex-col content-center justify-center !bg-[rgb(250,250,250)] dark:!bg-neutral-800 text-center p-2 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 w-[290px]">
-            <img src="{{ url_for('static', filename='assets/icons/project4.png') }}" alt="project-4" class="projects-img w-full max-w-[15rem] h-auto rounded-[2rem] my-2 mx-auto block">
-            <h2 class="experience-subtitle project-title my-1 max-w-[330px] h-[74px] text-black dark:text-white content-center underline [text-decoration-thickness:0.7px]">React mini games</h2>
-            <p class="project-text w-[270px] ml-auto mr-auto text-center text-[rgb(85,85,85)] dark:text-gray-400">Need a break? Try out one of these mini games!</p>
-            <div class="experience-btns justify-center flex gap-4">
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://swe-endgame.netlify.app/'">Assembly Endgame</button>
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://ten-die-tenzies.netlify.app/'">Tenzies</button>
-            </div>
-          </div>
-          <div class="color-container flex flex-col content-center justify-center !bg-[rgb(250,250,250)] dark:!bg-neutral-800 text-center p-2 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 w-[290px]">
-            <img src="{{ url_for('static', filename='assets/icons/project5.png') }}" alt="project-5" class="projects-img w-full max-w-[15rem] h-auto rounded-[2rem] my-2 mx-auto block">
-            <h2 class="experience-subtitle project-title my-1 max-w-[330px] h-[74px] text-black dark:text-white content-center underline [text-decoration-thickness:0.7px]">Gemini + RAG</h2>
-            <p class="project-text w-[270px] ml-auto mr-auto text-center text-[rgb(85,85,85)] dark:text-gray-400">A RAG pipeline that feeds Gemini API with information sourced from my portfolio and LinkedIn (ethically, yes)</p>
-            <div class="experience-btns justify-center flex gap-4">
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://github.com/the-jola-amodu/React-Project-1'">Github</button>
-              <button class="btn btn-color-2 project-btn font-semibold transition-all duration-300 ease-in-out p-4 w-32 rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 bg-none text-black dark:text-gray-300 border-[rgb(163,163,163)] dark:border-gray-500 mb-1 mt-1 hover:cursor-pointer hover:bg-[rgb(53,53,53)] hover:text-white hover:border-white hover:border dark:hover:bg-gray-700" onclick="location.href='https://jairag.vercel.app/'">Live Demo</button>
-            </div>
-          </div>
-          </div>
-          </div>
-      <img src="{{ url_for('static', filename='assets/icons/arrow.png') }}" alt="arrow down" class="icon arrow absolute right-[-5rem] bottom-10 cursor-pointer h-8 mt-4 max-lg:hidden" onclick="location.href='./#contact'">
-    </section>
+  <!-- ══════════════════════════ CREATIVE SIDE ══════════════════════════
+       Tactile: carved from stone / pinned to a studio wall.
+       Cream, textured, slightly off-kilter — but always readable. -->
+  <div id="mode-creative" class="dm-layer creative-page" hidden>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="flex justify-center flex-col h-[70vh] pt-16 mx-40 box-border min-h-fit max-lg:mx-[5%] max-sm:h-[40vh]">
-      <p class="section__text__p1 text-center font-semibold text-[rgb(85,85,85)] dark:text-gray-400">Get In Touch</p>
-      <h1 class="title text-5xl text-center max-sm:text-[2rem] dark:text-white">Contact Me</h1>
-      <div class="contact-info-upper-container flex justify-center rounded-[2rem] border-2 border-[rgb(53,53,53)] dark:border-neutral-600 !bg-[rgb(250,250,250)] dark:!bg-neutral-800 my-8 mx-auto p-2 max-sm:flex-wrap">
-        <div class="contact-info-container flex items-center justify-center gap-2 mx-4 my-4 max-sm:mx-0 max-sm:my-0">
-          <img src="{{ url_for('static', filename='assets/icons/email.png') }}" alt="email icon" class="icon contact-icon email-icon cursor-default h-10">
-          <p class="text-lg text-[rgb(85,85,85)] dark:text-gray-400 max-sm:text-base"><a href="mailto:jola47amodu@gmail.com" class="text-black dark:text-gray-300 no-underline transition-all duration-300 ease-in-out hover:text-gray-500 hover:underline hover:decoration-[rgb(181,181,181)]">jola47amodu@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container flex items-center justify-center gap-2 mx-4 my-4 max-sm:mx-0 max-sm:my-0">
-          <img src="{{ url_for('static', filename='assets/icons/linkedin.png') }}" alt="linkedin icon" class="icon contact-icon cursor-default h-10">
-          <p class="text-lg text-[rgb(85,85,85)] dark:text-gray-400 max-sm:text-base"><a href="https://www.linkedin.com/in/jolaoluwa-amodu" class="text-black dark:text-gray-300 no-underline transition-all duration-300 ease-in-out hover:text-gray-500 hover:underline hover:decoration-[rgb(181,181,181)]">LinkedIn</a></p>
-        </div>
-        </div>
+    <nav class="stone-nav" aria-label="Creative sections">
+      <a href="#gallery">✳ the wall</a>
+      <a href="#writings">✍ writings</a>
+      <a href="#journal">✒ journal</a>
+      <a href="#creative-about">❦ about</a>
+      <a href="#creative-contact">✉ say hi</a>
+    </nav>
+
+    <!-- THE WALL: polaroids pinned with tape, gently offset -->
+    <header id="gallery" class="creative-section">
+      <p class="dm-kicker stone-kicker">the studio wall</p>
+      <h2 class="dm-h2 stone-h2">Pinned Work</h2>
+      <p class="stone-sub">photographs, doodles & things — flip one over for the story</p>
+      <div class="dm-polaroid-grid">
+        {% for a in art %}
+        <figure class="dm-polaroid dm-reveal" aria-label="{{ a.caption }} — flip for story">
+          <div class="dm-polaroid-inner">
+            <div class="dm-polaroid-face">
+              <img src="{{ url_for('art_media', filename=a.filename) }}" alt="{{ a.caption }}" loading="lazy" />
+              <figcaption class="dm-polaroid-caption">{{ a.caption }}</figcaption>
+              <span class="dm-polaroid-hint">click to flip</span>
+            </div>
+            <div class="dm-polaroid-face back">
+              <p>{{ a.story or a.caption }}</p>
+            </div>
+          </div>
+        </figure>
+        {% endfor %}
+      </div>
+    </header>
+
+    <!-- WRITINGS: notepad cards, typed line by line -->
+    <section id="writings" class="creative-section">
+      <p class="dm-kicker stone-kicker">reading content/poems/*.md</p>
+      <h2 class="dm-h2 stone-h2">From the Notebook</h2>
+      <div class="dm-note-grid">
+        {% for poem in poems %}
+        <article class="dm-notepad dm-reveal">
+          <h3 class="dm-note-title">{{ poem.title }}</h3>
+          {% if poem.caption %}<p class="dm-note-caption">{{ poem.caption }}</p>{% endif %}
+          <div class="dm-note-body">
+            {% for line in poem.lines %}
+              {% if line %}
+            <span class="dm-note-line">{{ line }}</span>
+              {% else %}
+            <span class="dm-note-line">&nbsp;</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if poem.date %}<p class="dm-note-date">— {{ poem.date }}</p>{% endif %}
+        </article>
+        {% endfor %}
       </div>
     </section>
+
+    <!-- JOURNAL: the blog lives here on the creative side -->
+    <section id="journal" class="creative-section">
+      <p class="dm-kicker stone-kicker">reading the journal</p>
+      <h2 class="dm-h2 stone-h2">Journal</h2>
+      <p class="stone-sub">notes, entries & whatever I've pinned up lately</p>
+      <div class="dm-journal-grid">
+        {% if posts %}
+          {% for post in posts %}
+          <article class="journal-card dm-reveal">
+            {% if post.media %}
+            <div class="journal-media">
+              <img src="{{ url_for('static', filename='assets/uploaded_media/' + post.media) }}" alt="media for {{ post.title }}" loading="lazy" />
+            </div>
+            {% endif %}
+            <div class="journal-body">
+              {% if post.title %}<h3 class="journal-title">{{ post.title }}</h3>{% endif %}
+              <div class="journal-content">{{ post.content | safe }}</div>
+              {% if post.date_created %}<p class="journal-date">— {{ post.date_created }}</p>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        {% else %}
+          <div class="journal-empty dm-reveal">
+            <p>No journal entries yet. The admins are busy pinning things up… ✎</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- ABOUT: hand-written — nothing technical here -->
+    <section id="creative-about" class="creative-section">
+      <div class="dm-creative-about stone-slab dm-reveal">
+        <p class="dm-hand-note">things I make when I'm not shipping code…</p>
+        <p>The creative side is where my musings live: fascinations, 2.49 am creative bursts, and the messy middle of making things.</p>
+        <p>This is the part of the wall I'm still writing on. Come back anytime; the ink dries slowly here.</p>
+      </div>
+    </section>
+
+    <!-- SAY HI: paper card on the wall -->
+    <section id="creative-contact" class="creative-section">
+      <p class="dm-kicker stone-kicker">leave a note</p>
+      <h2 class="dm-h2 stone-h2">Say Hi</h2>
+      <div class="stone-contact dm-reveal">
+        <div class="stone-contact-row">
+          <img src="{{ url_for('static', filename='assets/icons/email.png') }}" alt="email icon" class="stone-icon">
+          <a href="mailto:jola47amodu@gmail.com" class="stone-link">jola47amodu@gmail.com</a>
+        </div>
+        <div class="stone-contact-row">
+          <img src="{{ url_for('static', filename='assets/icons/linkedin.png') }}" alt="linkedin icon" class="stone-icon">
+          <a href="https://www.linkedin.com/in/jola-amodu/" class="stone-link">LinkedIn</a>
+        </div>
+        {% if linkedin_pdf_url %}
+        <div class="stone-contact-row">
+          <img src="{{ url_for('static', filename='assets/icons/checkmark.png') }}" alt="resume icon" class="stone-icon">
+          <a href="/linkedin" class="stone-link">LinkedIn (PDF)</a>
+        </div>
+        {% endif %}
+        <div class="stone-contact-row">
+          <img src="{{ url_for('static', filename='assets/icons/github.png') }}" alt="github icon" class="stone-icon">
+          <a href="https://github.com/the-jola-amodu" class="stone-link">GitHub</a>
+        </div>
+        <p class="stone-contact-blog"><a href="#journal" class="stone-link">↳ back to the journal ↰</a></p>
+      </div>
+    </section>
+
+    <footer class="creative-footer">
+      <p>© 2026 Jola Amodu — carved, coded &amp; pinned up by hand.</p>
+    </footer>
+  </div>
+  <!-- /mode-creative -->
+
+</div>
+<!-- /dm-root -->
 {% endblock content %}

@@ -25,6 +25,15 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap"
       rel="stylesheet"
     />
+    <!-- Dual-mode fonts: terminal mono + handwritten captions -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Caveat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Dual-mode portfolio styles + behaviour -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}" />
+    <script src="{{ url_for('static', filename='js/portfolio.js') }}" defer></script>
+
     <title>Jola's Portfolio</title>
     <link
       rel="icon"
@@ -133,6 +142,23 @@
   <body
     class="m-0 p-0 !bg-white dark:!bg-neutral-900 transition-colors duration-300"
   >
+    <!-- SVG sculpting filters: hand-carved / hand-drawn borders (dual-mode portfolio) -->
+    <svg class="dm-svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="carved-edge" x="-6%" y="-6%" width="112%" height="112%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015 0.06" numOctaves="3" seed="7" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="sketch-wobble" x="-6%" y="-6%" width="112%" height="112%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="2" seed="12" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- The full-screen dual-mode homepage owns the whole viewport, so the
+         global nav/footer only render on the other pages (blog, admin). -->
+    {% if request.endpoint != 'index' %}
     <!-- Desktop Navigation -->
     <nav
       id="desktop-nav"
@@ -281,6 +307,7 @@
         </div>
       </div>
     </nav>
+    {% endif %}
 
     <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -291,6 +318,7 @@
     <!-- Main Content -->
     {% block content %}{% endblock content %}
 
+    {% if request.endpoint != 'index' %}
     <!-- Footer -->
     <footer
       class="h-[26vh] m-0.5 max-sm:h-[40vh] !bg-white dark:!bg-neutral-900 transition-colors duration-300"
@@ -342,6 +370,7 @@
         Copyright &#169; 2026 Jola Amodu. All Rights Reserved.
       </p>
     </footer>
+    {% endif %}
 
     <!-- Dark Mode Toggle Script -->
     <script>
@@ -369,59 +398,7 @@
         ?.addEventListener("click", toggleTheme);
     </script>
 
-    <!-- Typewriter Effect Script -->
-    <script>
-      const typewriterElement = document.getElementById("typewriter");
-      if (typewriterElement) {
-        const words = [
-          "Full-Stack Developer",
-          "AI & Automation Enthusiast",
-          "\"If it exists, we can automate\"",
-          "Visual Storyteller",
-          "Digital Product Builder",
-          "Dark Mode Evangelist"
-        ];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-
-        function type() {
-          const currentWord = words[wordIndex];
-
-          if (isDeleting) {
-            typewriterElement.textContent = currentWord.substring(
-              0,
-              charIndex - 1
-            );
-            charIndex--;
-            typingSpeed = 50;
-          } else {
-            typewriterElement.textContent = currentWord.substring(
-              0,
-              charIndex + 1
-            );
-            charIndex++;
-            typingSpeed = 100;
-          }
-
-          if (!isDeleting && charIndex === currentWord.length) {
-            // Pause at end of word
-            typingSpeed = 2000;
-            isDeleting = true;
-          } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            typingSpeed = 500;
-          }
-
-          setTimeout(type, typingSpeed);
-        }
-
-        // Start typewriter effect
-        type();
-      }
-    </script>
+    <!-- Typewriter effect lives in portfolio.js (home page only) -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
